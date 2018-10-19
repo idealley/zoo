@@ -1,4 +1,6 @@
-# zoo
+# Zoo
+
+Demo project.
 
 ## Project setup
 ```
