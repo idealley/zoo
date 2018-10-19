@@ -1,60 +1,66 @@
 <template>
-  <v-container fluid>
-    <v-slide-y-transition mode="out-in">
-      <v-card>     
-        <v-card-title
-          primary-title
-          class="title-wrapper"
-        >
-          <div class="title">
-            {{ currentType.type | upperCaseFirstLetter }}{{currentType.plural ? currentType.plural : 's'}}
-          </div>
-        </v-card-title>
-        <v-card-text/>
-        <v-list two-line subheader>
-          <template v-for="(item, index) in filteredAnimals">
-            <v-list-tile
-              :key="item.name + index"
-            >
-              <v-list-tile-content>
-                <v-tooltip bottom>
-                  <v-list-tile-title slot="activator">
-                    {{ item.name }}
-                  </v-list-tile-title>
-                  <span>Cry: {{ currentType.cry }} {{item.cry }}</span>
-                </v-tooltip>
-                <v-list-tile-sub-title>
-                  Age: {{ item.age}}
-                </v-list-tile-sub-title>
-              </v-list-tile-content>
-              <v-list-tile-action @click="removeAnimal(item.name)">
-                <v-icon color="error">delete</v-icon>
-              </v-list-tile-action>
-            </v-list-tile>
-          </template>
-        </v-list>
-        <v-card-text>
-          <add-animal />
-        </v-card-text>
-        <v-fab-transition>
-          <v-btn
-            color="pink"
-            dark
-            absolute
-            bottom
-            right
-            fab
-            @click="add"
-          >
-            <v-icon>add</v-icon>
-          </v-btn>
-        </v-fab-transition>
-        <v-card-actions>
-          <v-btn color="info" @click="back">Back to list</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-slide-y-transition>
-  </v-container>
+  <v-fade-transition hide-on-leave>
+    <v-content>
+      <v-container>
+        <v-layout row>
+          <v-flex xs12 sm6 md6 lg4 offset-sm3 offset-md3 offset-lg4>
+            <v-card>     
+              <v-card-title
+                primary-title
+                class="title-wrapper"
+              >
+                <div class="title">
+                  {{ currentType.type | upperCaseFirstLetter }}{{currentType.plural ? currentType.plural : 's'}}
+                </div>
+              </v-card-title>
+              <v-card-text/>
+              <v-list two-line subheader>
+                <template v-for="(item, index) in filteredAnimals">
+                  <v-list-tile
+                    :key="item.name + index"
+                  >
+                    <v-list-tile-content>
+                      <v-tooltip bottom>
+                        <v-list-tile-title slot="activator">
+                          {{ item.name }}
+                        </v-list-tile-title>
+                        <span>Cry: {{ currentType.cry }} {{item.cry }}</span>
+                      </v-tooltip>
+                      <v-list-tile-sub-title>
+                        Age: {{ item.age}}
+                      </v-list-tile-sub-title>
+                    </v-list-tile-content>
+                    <v-list-tile-action @click="removeAnimal(item.name)">
+                      <v-icon color="error">delete</v-icon>
+                    </v-list-tile-action>
+                  </v-list-tile>
+                </template>
+              </v-list>
+              <v-card-text>
+                <add-animal />
+              </v-card-text>
+              <v-fab-transition>
+                <v-btn
+                  color="pink"
+                  dark
+                  absolute
+                  bottom
+                  right
+                  fab
+                  @click="add"
+                >
+                  <v-icon>add</v-icon>
+                </v-btn>
+              </v-fab-transition>
+              <v-card-actions>
+                <v-btn color="info" @click="back">Back to list</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-flex >
+        </v-layout>
+      </v-container>
+    </v-content>
+  </v-fade-transition>
 </template>
 
 <script>

@@ -33,3 +33,9 @@ export default {
   }
 };
 </script>
+
+<style>
+.v-content {
+  transition-duration: 1s !important;
+}
+</style>
